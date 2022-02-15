@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head  th:replace="fragments/admin.html :: headerfiles(title='Workhop+')"> 
+   </head>
+   <style>
+   .logo{
+	    height: 125px;
+}
+   .logo a{    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+body{
+	text-align: center;
+}
+.news{
+	width: 100%;
+	height: 50%;
+  
+	 background: url(http://world5.commonsupport.com/html/carshire/images/main-slider/image-1.jpg) no-repeat ;
+	 background-size: cover; 
+}
+.wrapper{
+	background-color: #fff0;
+	grid-gap: 42px;
+}
+.main_p{
+	position: absolute;
+	top: 52%;
+	background: #ffffff00;
+}
+.circle{
+	width: 240px;
+	    background: #ffffffa8;
+}
+.text_position{
+	  left: 60%;
+    top: 37%;
+}
+.text_position2{
+	    left: 50%;
+    top: 29%;
+}
+   </style>
+   <body style="text-align: center;">
+   <header th:replace="fragments/admin.html :: header"></header>
+   <div class="news">
+   <div class="text_position">
+            <div class="text" th:text ="${user.nome}">
+              
+            </div>
+         </div>
+         <div class="text_position2">
+            <div class="text2" > 
+             Wellcome Back
+            </div>
+         </div>
+   </div>
+ <div class="main_p">
+ <div class="wrapper">
+  <div class="circle a"><div class="content" style="position: relative;"><div class="img_cont" ><span><i class="fas fa-wrench"></i></span></div><div class="text_cont"><h2><a th:href="@{/admin/all_tipologie}" >Tipologie<span class="links"></span></a></h2></div></div></div>
+<div class="circle a"><div class="content" style="position: relative;"><div class="img_cont"><span><i class="material-icons" style="font-size: 165px;">engineering</i></span></div><div class="text_cont"><h2><a th:href="@{/admin/Meccanici}" >Meccanici<span class="links"></span></a></h2></div></div></div>
+  <div class="circle a"><div class="content" style="position: relative;"><div class="img_cont"><span><i class="far fa-calendar-alt"></i></span></div><div class="text_cont"><h2><a href="/admin/Interventi" >Cronologia Prenotazione<span class="links"></span></a></h2></div></div></div>
+   <div class="circle a"><div class="content" style="position: relative;"><div class="img_cont"><span><i class="far fa-address-book"></i></span></div><div class="text_cont"><h2><a href="/admin/Clienti" >Clienti<span class="links"></span></a></h2></div></div></div>
+<div class="circle a"><div class="content" style="position: relative;"><div class="img_cont"><span><i class="material-icons" style="font-size: 165px;">car_repair</i></span></div><div class="text_cont"><h2><a href="/admin/prenota_tipo" >Prenota Intervento<span class="links"></span></a></h2></div></div></div>
+
+</div>
+ </div>
+   </body>
+</html>

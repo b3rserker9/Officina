@@ -1,0 +1,201 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head  th:replace="fragments/admin.html :: headerfiles(title='Workhop+ Maccanici')"> 
+   </head>
+   <style>
+   label{
+	width: auto;
+}
+   .btn-modal_open {
+  display: block;
+  margin: 15px auto;
+  padding: 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background: #00A3E4;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+.btn-modal_open:hover, .btn-modal_open:focus {
+  background: #00b5fe;
+  cursor: pointer;
+}
+.btn-modal_open:active {
+  background: #0091cb;
+}
+
+.btn-modal_close {
+  display: inline-block;
+  float: right;
+  margin: 0 10px 0 0;
+  padding: 6px 9px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background: #FC5E71;
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+}
+.btn-modal_close:hover, .btn-modal_close:focus {
+  background: #fc7787;
+  cursor: pointer;
+}
+.btn-modal_close:active {
+  background: #fc455b;
+}
+
+.modalCheckbox .modal-overlay {
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.modalCheckbox .modal-dialog {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  width: 300px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 1100;
+  border-radius: 4px;
+  background: #FFF;
+}
+.modalCheckbox .modal-dialog .modal-header {
+  padding: 15px 0;
+  background: #00A3E4;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  text-align: center;
+  color: #FFF;
+}
+.modalCheckbox .modal-dialog .modal-header h2 {
+  margin: 0;
+}
+.modalCheckbox .modal-dialog .modal-body {
+  padding: 20px;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+input[type=checkbox]:checked ~ .modal-overlay {
+  display: block;
+}
+input[type=checkbox]:checked ~ .modal-dialog {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  top: 20%;
+  transform: translate(-50%);
+}
+.red{
+	 color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.blue{
+	    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+.blue:hover{
+	    color: #fff;
+    background-color: #138496;
+    border-color: #117a8b;
+}
+.red:hover{
+	    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.btn{
+	display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.col-3{
+	width: 44%;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown {
+  position: absolute;
+}
+   </style>
+    <body>
+    <header th:replace="fragments/admin.html :: header"></header>
+   <div class="space"></div>
+<div class="container" style="width: fit-content;">
+	<table>
+		<thead>
+			<tr>
+				<th>Prenotazione n.</th>
+				<th>Data Prenotazione</th>
+				<th>Data Intervento</th>
+				<th>Meccanico</th>
+				<th>Tipologia</th>
+		
+				<th>Prezzo</th>
+				<th>Stato</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		<div th:each="p : ${prenotazione}">
+			<tr>
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.data_prenotazione}"> 2</td>
+				<td th:text="${p.data_intervento}"> 3</td>
+				<td><span th:text="${p.meccanico.nome}"></span></td>
+				<td th:text="${p.tipologia.nome}"></td>
+				
+				<td th:text="${p.prezzo}+€"></td>
+				<td><span th:if="${p.conferma}" style="color: green;">Concluso</span>
+    				<span th:unless="${p.conferma}" style="color: red;" >In Corso</span></td>
+    				<td style="display: flex;justify-content: space-around;"><a  th:href="'confermaIntervento/'+${p.id}"  class="btn blue"> <span><i class="fas fa-edit"></i></span>Edit</a>
+										<a  class="btn red "> <span><i class="fas fa-trash-alt"></i></span>Delete</a>
+				
+		</td>
+			</tr>
+		</div>
+		</tbody>
+	</table>
+</div>
+   </body>
+</html>

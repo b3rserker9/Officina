@@ -1,28 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:fragment="headerfiles(title)">
-	<script src="https://kit.fontawesome.com/ced3f913ea.js" crossorigin="anonymous"></script>
-	<link th:href="@{/css/base.css}" rel="stylesheet">
-	</head>
-	<body>
-			<header th:fragment="header" class="header">
-		<div class="thm-container clearfix">
-			<div class="logo pull-left">
-				
-		<a class="logo" href="https://livedemo.templatation.com/workshopplus/" title="Just another Live Demo site">
-				 <img src="https://livedemo.templatation.com/workshopplus/wp-content/themes/workshopplus/images/logo.png" alt="Workshopplus WordPress Theme">
-			 </a>
-			</div>
-			<div class="nav-holder pull-right">
-					<ul class="menu">
-						<li><a href="#home">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#portfolio">Portfolio</a></li>
-						<li><a href="#contacts">Contacts</a></li>
-					</ul>   
-	</div>
-	
-	</div>
-</header>
-	</body>
+   <head th:fragment="headerfiles(title)">
+      <title th:text="${title}"></title>
+      <script src="https://kit.fontawesome.com/ced3f913ea.js" crossorigin="anonymous"></script>
+      <link th:href="@{/css/base.css}" rel="stylesheet">
+      <link th:href="@{/css/register.css}" rel="stylesheet">
+     
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+   </head>
+   <body>
+   
+      <header th:fragment="header" class="header">
+         <div class="thm-containers clearfix">
+            <div class="logo pull-left" style="width: 42%;">
+               <a class="logos">
+               <img src="/images/logo.png">
+               </a>
+            </div>
+            <div class="topnav pull-right" id="myTopnav">
+            <div class="links">
+  <a href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+            </div>
+            <div class="sign_form">
+               <a id="myBtn" style="cursor: pointer;">Login</a>
+               <a th:href="@{/register}">Register</a>
+               </div>
+         </div>
+</div>
+  
+      </header>
+   </body>
+   <footer id="footer" class="col-full sec-padding">
+      <div id="footer-widget-area" class="thm-container">
+         <div class="container">
+            <div class="row">
+               <div class="col">
+                  <div class="widget-lpinfo">
+                     <img src="/images/logo2.png">
+                     <p>Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.  
+                        Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. 
+                     </p>
+                  </div>
+                  
+                  <div class="widget-social-links">
+                     <a target="_blank" href="#" class="twitter" title="Twitter"><i class="fa fa-twitter mysocial_style"></i></a>
+                     <a target="_blank" href="#" class="facebook" title="Facebook"><i class="fa fa-facebook mysocial_style"></i></a>
+                     <a target="_blank" href="#" class="instagram" title="Instagram"><i class="fa fa-instagram mysocial_style"></i></a>
+                  </div>
+               </div>
+               <div class="col">
+                  <div id="text-2" class="widget widget_text">
+                     <h2 class="sec-title"><span>Our Services</span></h2>
+                     <div class="textwidget">
+                        <div class="quick-links">
+                           <ul class="left-quick-links alignleft">
+                              <li><a href="">Engine Diagnostics</a></li>
+                              <li><a href="">Oil and Filters</a></li>
+                              <li><a href="">Air Conditioning</a></li>
+                              <li><a href="">Tire and Wheel Services</a></li>
+                              <li><a href="">Fuel System Service</a></li>
+                           </ul>
+                           <ul>
+                              <li><a href="">Car Wash</a></li>
+                              <li><a href="">Air Conditioning</a></li>
+                              <li><a href="">Engine Diagnostics</a></li>
+                              <li><a href="">Fuel System Service</a></li>
+                              <li><a href="">Safety Check</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col">
+                  <div id="text-4" class="widget widget_text">
+                     <h2 class="sec-title"><span>Get in Touch</span></h2>
+                     <div class="textwidget">
+                        <ul class="contact-infos">
+                           <li><i class="fa fa-map-marker"></i>
+                              <b>Car workshop ltd.</b> <br> Via Roma macchiavelli, 36, roma
+                           </li>
+                           <li><i class="fa fa-phone"></i><span class="sbold italic">
+                             	06 8524 8503
+                              </span>
+                           </li>
+                           <li>	<i class="fa fa-envelope-o"></i>
+                              contact@carworkshop.com
+                           </li>
+                           <li><i class="fa fa-clock-o"></i>Monday - Friday : <span class="sbold">8.00 - 19.00</span>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
 </html>

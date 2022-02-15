@@ -1,0 +1,225 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head  th:replace="fragments/default.html :: headerfiles(title='Prenotazione Intervento')"> 
+   </head>
+   <style>
+   li{
+	padding: 2em 0;
+}
+   .logo{
+	    height: 125px;
+}
+      .logo a{    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+ .order{
+	display: flex;justify-content: center;
+}
+label,
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    max-height: 500px;
+        width: 80%;
+        margin: auto;
+    height: 30%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+.center{
+	    padding-right: 15px;
+    padding-left: 15px;
+max-height: 500px;
+	width: 766px;
+	margin: auto;
+}
+.intro{
+	    background: #272b3d url(/images/prenota.jpg) no-repeat;
+    background-size: cover;
+    width: 100%;
+    background-attachment: fixed;
+    height: 75%;
+}
+.Section{
+	width: 50%;
+	height: 50%;
+	background-color: #ffffff8f;
+margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.picture{
+	display: flex;
+	justify-content: center;
+}
+.desc{
+	    color: black;
+    text-align: center;
+    font-size: 15px;
+}
+.titolo{
+	color: black;
+    font-size: 25px;
+    margin: auto;
+}
+.container{
+	max-height: 400px;
+	overflow: auto;
+	    padding-right: 15px;
+    padding-left: 15px;
+    margin: auto;
+    max-width: fit-content;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown {
+  position: absolute;
+}
+   </style>
+   <body>
+ <header th:replace="fragments/default.html :: header"></header>
+ <div class="intro">
+
+<div class="Section">
+<div class="picture" ><img class="img" style="max-width: 25%;margin: auto;"th:src="@{${tipologia.img}}"/></div>
+<div class="titolo" ><h2 th:text="${tipologia.nome}"></h2></div>
+<div class="desc"><p th:text="${tipologia.descrizione}"></p></div>
+</div>
+
+
+</div>
+
+ <form th:action="@{/prenota}" method="POST" th:object="${prenota}">
+  <div style="display: flex;justify-content: center;flex-direction: column;">
+ <input type="radio" th:field="*{prezzo}" th:value=${tipologia.prezzo} checked hidden>
+  <input type="radio" th:field="*{tipologia}" th:value=${tipologia.id} checked hidden>
+
+
+ <div class="space"></div>
+ 
+ <div class="container" style="width: fit-content;max-width: 766px;">
+  
+  <h2>Cliente :</h2>
+	<table style="table-layout: fixed;width: 100%;">
+		<thead>
+			<tr>
+				<th>             </th>
+				
+				<th>ID</th>
+				
+				<th>Nome</th>
+				
+				<th>Numero di telefono</th>
+				
+				
+				
+			</tr>
+		</thead>
+		<tbody>
+		<div th:each="c : ${Cliente}">
+			<tr>
+				<td>  <input type="radio" th:field="*{cliente}" th:value=${c.id} ></td>
+				<td th:text="${c.id}"></td>
+				<td th:text="${c.nome} +' '+ ${c.cognome} "></td>
+				<td th:text="'+39 ' + ${c.phone}"></td>
+				
+		
+			</tr>
+		</div>
+		</tbody>
+	</table>
+</div>
+ 
+  <div class="space"></div>
+  
+   <div class="container" style="width: fit-content; max-width: 766px;">
+    <h2>Addetto all'intervento:</h2>
+	<table style="table-layout: fixed;width: 100%;">
+		<thead>
+			<tr>
+			<th>          </th>
+				<th>ID</th>
+				
+				<th>Nome</th>
+				
+				<th>Competenze</th>
+				
+				
+			</tr>
+		</thead>
+		<tbody>
+		<div th:each="c : ${meccanici}">
+			<tr>
+			
+				<td><input type="radio" th:value="${c.id}" th:field="*{meccanico}" > </td>
+				<td th:text="${c.id}"></td>
+				<td th:text="${c.nome} +' '+ ${c.cognome} "></td>
+				<td class="dropdown">
+				  		<span>tipologia</span>
+				  <div class="dropdown-content" >
+				  <p th:each="t : ${c.tipologia}" th:text="${t.nome}"></p>
+				</div></td>
+			</tr>
+		</div>
+		</tbody>
+	</table>
+</div>
+  <div class="space"></div>
+
+<div class="center">
+ <div>
+ <h2>Descrizione:</h2>
+
+<textarea id="story" name="story" th:field="*{descrizione}">
+
+</textarea>
+</div>
+ </div>
+   <div class="space"></div>
+<div class="date" style="width: 20%; margin: auto;">
+<h2>Data Intervento:</h2>
+<input type="date" th:field="*{data_intervento}">
+</div>
+  <div class="space"></div>
+  
+  
+ 
+ </div>
+  <div class="space"></div>
+ <div class="order">
+ <button type="submit" style="margin: auto;"> Invia</button>
+ </div>
+ </div>
+ </form>
+ 
+   </body>
+</html>

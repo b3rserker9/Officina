@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Registrazione</title>
+<link th:href="@{/css/register.css}" rel="stylesheet">
+</head>
+   <body>
+     <div class="back"></div>
+
+  <div class="register-form">
+        <h1 class="reg-text">register</h1>
+    <form  th:action="@{/register}" method="POST" class="reg-form">
+
+      <div class="text">
+      	<div class="col-3">
+        	<input class="effect-1" type="text" th:field="${user.nome}" placeholder=" Name" required>
+            <span class="focus-border"></span>
+            <span class="errors" th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}" ></span>
+        </div>
+      
+   
+     	<div class="col-3">
+        	<input class="effect-1" type="text" th:field="${user.cognome}" placeholder="Last name" required>
+            <span class="focus-border"></span>
+            <span class="errors" th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}" ></span>
+        </div>
+     
+    	<div class="col-3">
+        	<input class="effect-1" type="tel" th:field="${user.phone}" minlength="10" maxlength="10" pattern="[0-9]+" placeholder=" Phone number" required>
+            <span class="focus-border"></span>
+            <span class="errors" th:if="${#fields.hasErrors('user.phone')}" th:errors="${user.phone}" ></span>
+        </div>
+
+   	<div class="col-3">
+        	<input class="effect-1" type="text"  th:field="${credentials.username}" placeholder="Username" required>
+            <span class="focus-border"></span>
+            <span class="errors" th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}"  ></span>
+        </div>
+
+   	<div class="col-3">
+        	<input class="effect-1" type="password" th:field="${credentials.password}" placeholder="Password" required>
+            <span class="focus-border"></span>
+            <span class="errors" th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}" ></span>
+        </div>
+      </div>
+     
+
+      <button type="submit" class="b">register</button>
+
+
+    </form>
+  </div>
+   </body>

@@ -25,10 +25,24 @@ public class Tipologia {
 	@Column
 	private String nome;
 	
-	@Column
+	@Column(columnDefinition="TEXT")
 	private String descrizione;
 	
 	@Column
+	private String img;
+	
+	@Column
 	private float prezzo;
+
+	public Tipologia(){}
+	public Tipologia(String nome, String descrizione, float prezzo, String img) {
+		super();
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.prezzo = prezzo;
+		this.img = img;
+	}
+	
+	
 
 }

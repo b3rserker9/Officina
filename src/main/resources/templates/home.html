@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head  th:replace="fragments/default.html :: headerfiles(title='Workhop Home')"> 
+   </head>
+<style>
+   .logo{
+	    height: 125px;
+}
+      .logo a{    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
+   <body>
+ <header th:replace="fragments/default.html :: header"></header>
+ <div class="space"></div>
+ <div class="main_p">
+ <div class="wrapper" style="grid-template-columns: 250px 250px;">
+<div class="circle a"><div class="content" style="position: relative;"><div class="img_cont"><span><i class="far fa-calendar-alt"></i></span></div><div class="text_cont"><h2><a th:href="@{/clienti/cronologia}" >Cronologia Intervento<span class="links"></span></a></h2></div></div></div>
+  <div class="circle a"><div class="content" style="position: relative;"><div class="img_cont"><span><i class="fas fa-cog"></i></span></div><div class="text_cont"><h2><a href="#" >Profilo<span class="links"></span></a></h2></div></div></div>
+
+</div>
+ </div>
+   </body>
+</html>

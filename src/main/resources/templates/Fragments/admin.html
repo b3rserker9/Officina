@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head th:fragment="headerfiles(title)">
+      <title th:text="${title}"></title>
+      <script src="https://kit.fontawesome.com/ced3f913ea.js" crossorigin="anonymous"></script>
+      <link th:href="@{/css/base.css}" rel="stylesheet">
+        <link th:href="@{/css/home.css}" rel="stylesheet">
+         <link th:href="@{/css/admin.css}" rel="stylesheet">
+        <link th:href="@{/css/cronologia.css}" rel="stylesheet">
+        <link th:href="@{/css/register.css}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+   </head>
+   <body>
+      <header th:fragment="header" class="header">
+         <div class="thm-containers clearfix">
+            <div class="logo pull-left" style="width: 42%;">
+               <a th:href="@{/default}" class="logos">
+               <img src="/images/logo.png">
+               </a>
+            </div>
+            <div class="topnav pull-right" id="myTopnav">
+            <div class="links">
+  <a href="/default">Home</a>
+  <a href="/admin/all_tipologie">Tipologie</a>
+  <a href="/admin/Meccanici">Meccanici</a>
+  <a href="/admin/Clienti">Clienti</a>
+            </div>
+            <div class="sign_form">
+               <a href="#popup" style="font-size: 30px;"><span><i class="fas fa-user"></i></span></a></li>
+               
+               </div>
+         </div>
+</div>
+   <div id="c_popup" class="overlay1">
+   <div id="popup" class="overlay">
+        <div class="triangle"></div>
+   
+        <div class="options">
+        <div class="x"><a href="#c_popup">X</a></div>
+            <div class="dati">
+            <a  href="Dati">Profilo</a></div>
+            <div class="l2">
+            <a th:href="@{/logout}"><span><i class="fas fa-sign-out-alt"></i></span>Log out</a></div>
+
+        </div>
+
+    </div>
+</div>
+      </header>
+   </body>
+   <footer id="footer" class="col-full sec-padding">
+      <div id="footer-widget-area" class="thm-container">
+         <div class="container">
+            <div class="row">
+               <div class="col">
+                  <div class="widget-lpinfo">
+                     <img src="https://96660-279036-raikfcquaxqncofqfm.stackpathdns.com/images/cdn/misc/wp-footer-logo.png">
+                     <p>Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.  
+                        Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. 
+                     </p>
+                  </div>
+                  <div class="footer-read-more">
+                     <a href="#">Read More <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i></a>
+                  </div>
+                  <div class="widget-social-links">
+                     <a target="_blank" href="#" class="twitter" title="Twitter"><i class="fa fa-twitter mysocial_style"></i></a>
+                     <a target="_blank" href="#" class="facebook" title="Facebook"><i class="fa fa-facebook mysocial_style"></i></a>
+                     <a target="_blank" href="#" class="instagram" title="Instagram"><i class="fa fa-instagram mysocial_style"></i></a>
+                  </div>
+               </div>
+               <div class="col">
+                  <div id="text-2" class="widget widget_text">
+                     <h2 class="sec-title"><span>Our Services</span></h2>
+                     <div class="textwidget">
+                        <div class="quick-links">
+                           <ul class="left-quick-links alignleft">
+                              <li><a href="">Engine Diagnostics</a></li>
+                              <li><a href="">Oil and Filters</a></li>
+                              <li><a href="">Air Conditioning</a></li>
+                              <li><a href="">Tire and Wheel Services</a></li>
+                              <li><a href="">Fuel System Service</a></li>
+                           </ul>
+                           <ul>
+                              <li><a href="">Car Wash</a></li>
+                              <li><a href="">Air Conditioning</a></li>
+                              <li><a href="">Engine Diagnostics</a></li>
+                              <li><a href="">Fuel System Service</a></li>
+                              <li><a href="">Safety Check</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col">
+                  <div id="text-4" class="widget widget_text">
+                     <h2 class="sec-title"><span>Get in Touch</span></h2>
+                     <div class="textwidget">
+                        <ul class="contact-infos">
+                           <li><i class="fa fa-map-marker"></i>
+                              <b>Car workshop ltd.</b> <br> 42B, Tailstoi Town 5248 MT, Australia
+                           </li>
+                           <li><i class="fa fa-phone"></i><span class="sbold italic">
+                              01865 524 8503
+                              </span>
+                           </li>
+                           <li>	<i class="fa fa-envelope-o"></i>
+                              contact@carworkshop.com
+                           </li>
+                           <li><i class="fa fa-clock-o"></i>Monday - Friday : <span class="sbold">8.00 - 19.00</span>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+</html>

@@ -1,0 +1,246 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head  th:replace="fragments/admin.html :: headerfiles(title='Workhop+')"> 
+   </head>
+   <style>
+
+ td  img{
+	width: 60px;
+	height: 60px;
+}
+input[type='checkbox'] {
+	display: none;
+}
+
+.wrap-collabsible {
+	    display: flex;
+    flex-direction: column;
+	margin: 1.2rem 0;
+}
+
+
+.lbl-toggle {
+	    margin-left: 94px;
+    width: 327px;
+	display: block;
+	font-weight: bold;
+	font-family: monospace;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 1rem;
+	color: #DDD;
+	background: #0069ff;
+	cursor: pointer;
+	border-radius: 7px;
+	transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+	color: #FFF;
+}
+
+.lbl-toggle::before {
+	content: ' ';
+	display: inline-block;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid currentColor;
+	vertical-align: middle;
+	margin-right: .7rem;
+	transform: translateY(-2px);
+	transition: transform .2s ease-out;
+}
+
+.toggle:checked+.lbl-toggle::before {
+	transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+	margin-left: 94px;
+	width: 50%;
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked+.lbl-toggle+.collapsible-content {
+	max-height: 500px;
+}
+
+.toggle:checked+.lbl-toggle {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.collapsible-content .content-inner {
+	background: rgba(0, 105, 255, .2);
+	border-bottom: 1px solid rgba(0, 105, 255, .45);
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	padding: .5rem 1rem;
+}
+
+.collapsible-content p {
+	margin-bottom: 0;
+}
+label,
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+textarea {
+	max-height: 310px;
+	max-width: 680px;
+	    height: 165px;
+    width: 100%;
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+}
+.button {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button:hover {
+  background-color: #008CBA;
+  color: white;
+}
+[type=file] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+[type=file] + label {
+  background: #f15d22;
+  border: none;
+  border-radius: 5px;
+  height: 80px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Rubik", sans-serif;
+  font-size: inherit;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 1rem 50px;
+  position: relative;
+  transition: all 0.3s;
+  vertical-align: middle;
+}
+[type=file] + label:hover {
+  background-color: #d3460d;
+}
+[type=file] + label.btn-2 {
+  background-color: #99c793;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+[type=file] + label.btn-2:hover {
+  background-color: #497f42;
+}
+[type=file] + label.btn-2:hover::before {
+  right: 75%;
+}
+   </style>
+   <body>
+    <header th:replace="fragments/admin.html :: header"></header>
+   <div class="space"></div>
+   <div class="error">
+   <span class="errors" th:if="${#fields.hasErrors('tipologia.nome')}" th:errors="${tipologia.nome}" ></span>
+   </div>
+  <div class="wrap-collabsible">
+   <input id="collapsible" class="toggle" type="checkbox"> <label for="collapsible" class="lbl-toggle">Crea una nuova tipologia</label>
+   <div class="collapsible-content">
+   <form  th:action="@{/NewTipologia}" method="POST" th:object="${tipologia}" enctype="multipart/form-data">
+      <div class="content-inner">
+      <div style="display: flex;">
+      	<div class="col-3" >
+      	<label for="name">Nome tipologia</label>
+        	<input id="name" class="effect-1" type="text" th:field="*{nome}"  placeholder=" Name" required>
+            <span class="focus-border"></span>
+            
+        </div>
+        	<div class="col-3" style="position: relative;width: 250px;">
+        	<label for="price">Prezzo tipologia</label>
+        	<input class="effect-1 price" id="price" type="number" th:field="*{prezzo}" placeholder="Prezzo" required>
+            <span class="focus-border"></span>
+          
+        </div>
+      </div>
+      <div style="display: flex;">
+        	<div class="col-3">
+        	<label for="story">Descrizione</label>
+
+			<textarea id="story" th:field="*{descrizione}" name="story" >
+
+				</textarea>
+            <span class="focus-border"></span>
+           
+        </div>
+        <div style="display: flex; justify-content: center;flex-direction: column;">
+         <input type="file" name="file" id="file" />
+  <label for="file" class="btn-2"><span><i class="material-icons">upload_file</i></span>Upload</label>
+        </div>
+      </div>
+        <button class="button" type="submit">Create</button>
+          </div>
+   </form>
+   </div>
+</div> <div class="space"></div>
+ <div class="container" style="width: 80%;">
+	<table style="width: 100%;">
+		<thead>
+			<tr>
+				<th>ID</th>
+				
+				<th>Nome</th>
+				
+				<th>Prezzo</th>
+				
+				<th>Descrizione</th>
+				
+				<th>Img</th>
+			</tr>
+		</thead>
+		<tbody>
+		<div th:each="t : ${tipi}">
+			<tr>
+				<td th:text="${t.id}"></td>
+				<td th:text="${t.nome}"></td>
+				<td th:text="${t.prezzo}+€"></td>
+				<td th:text="${t.Descrizione}"></td>
+				<td><img th:src="@{${t.img}}"/></td>
+			</tr>
+		</div>
+		</tbody>
+	</table>
+</div>
+   </body>
+</html>

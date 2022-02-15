@@ -1,7 +1,9 @@
 package it.uniroma3.siw.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -9,9 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -21,29 +27,35 @@ import lombok.Setter;
 @Data
 public class Prenotazione {
 	
-	@EmbeddedId
-	private PrenotazioneId id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Setter(value = AccessLevel.NONE)
+	private Long id;
 	
 	@Column
-	private Date data_prenotazione;
+	private String data_prenotazione;
 	
 	@Column
-	private Date data_intervento;
+	private String data_intervento;
 	
 
 	@ManyToOne
-	@MapsId("Meccanico_id")
-	@JoinColumn(name ="Meccanico_id")
 	private Meccanico meccanico;
 	
 	@ManyToOne
-	@MapsId("Utente_id")
-	@JoinColumn(name = "Utente_id")
 	private Utente cliente;
 	
 	@ManyToOne
-	@MapsId("Intervento_id")
-	@JoinColumn(name = "Intervento_id")
 	private Tipologia tipologia;
+	
+	@Column
+	private Float prezzo;
+	
+	@Column (columnDefinition="TEXT")
+	private String descrizione;
+	
+	@Column
+	private Boolean conferma;
+	
 	
 }
