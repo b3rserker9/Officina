@@ -21,31 +21,15 @@
             </div>
             <div class="topnav pull-right" id="myTopnav">
             <div class="links">
-  <a href="/clienti/default">Home</a>
+  <a href="/default">Home</a>
   <a href="/clienti/cronologia">Cronologia Interventi</a>
-  <a href="/clienti/edit">Profilo</a>
+  <a href="/clienti/tipi">Interventi</a>
             </div>
-            <div class="sign_form">
-               <a href="#popup" style="font-size: 30px;"><span><i class="fas fa-user"></i></span></a></li>
-               
-               </div>
+             <div class="sign_form">
+               <a th:href="@{/logout}"><span><i class="fas fa-sign-out-alt"></i></span>Log out</a></div>
          </div>
 </div>
-   <div id="c_popup" class="overlay1">
-   <div id="popup" class="overlay">
-        <div class="triangle"></div>
-   
-        <div class="options">
-        <div class="x"><a href="#c_popup">X</a></div>
-            <div class="dati">
-            <a  href="Dati">Profilo</a></div>
-            <div class="l2">
-            <a th:href="@{/logout}"><span><i class="fas fa-sign-out-alt"></i></span>Log out</a></div>
 
-        </div>
-
-    </div>
-</div>
       </header>
    </body>
    <footer id="footer" class="col-full sec-padding">
@@ -55,9 +39,8 @@
                <div class="col">
                   <div class="widget-lpinfo">
                      <img src="https://96660-279036-raikfcquaxqncofqfm.stackpathdns.com/images/cdn/misc/wp-footer-logo.png">
-                     <p>Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.  
-                        Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. 
-                     </p>
+                     <p>Oltre alla normale Manutenzione di tutti i veicoli, disponiamo di 2 Centri Revisione, Servizio Gommista con sostituzione e riparazione Pneumatici e servizio Elettrauto con Strumenti di Diagnosi sempre aggiornati.</p>
+                
                   </div>
                   <div class="footer-read-more">
                      <a href="#">Read More <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i></a>
@@ -74,18 +57,18 @@
                      <div class="textwidget">
                         <div class="quick-links">
                            <ul class="left-quick-links alignleft">
-                              <li><a href="">Engine Diagnostics</a></li>
-                              <li><a href="">Oil and Filters</a></li>
-                              <li><a href="">Air Conditioning</a></li>
-                              <li><a href="">Tire and Wheel Services</a></li>
-                              <li><a href="">Fuel System Service</a></li>
+                              <li><a >Engine Diagnostics</a></li>
+                              <li><a >Oil and Filters</a></li>
+                              <li><a >Air Conditioning</a></li>
+                              <li><a >Tire and Wheel Services</a></li>
+                              <li><a >Fuel System Service</a></li>
                            </ul>
                            <ul>
-                              <li><a href="">Car Wash</a></li>
-                              <li><a href="">Air Conditioning</a></li>
-                              <li><a href="">Engine Diagnostics</a></li>
-                              <li><a href="">Fuel System Service</a></li>
-                              <li><a href="">Safety Check</a></li>
+                              <li><a >Car Wash</a></li>
+                              <li><a >Air Conditioning</a></li>
+                              <li><a >Engine Diagnostics</a></li>
+                              <li><a >Fuel System Service</a></li>
+                              <li><a>Safety Check</a></li>
                            </ul>
                         </div>
                      </div>

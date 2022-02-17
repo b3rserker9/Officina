@@ -227,8 +227,8 @@ input[type=checkbox]:checked ~ .modal-dialog {
 				<td ><input type="text" th:id="${c.id}+n" name=nome th:value="${c.nome}" disabled></td>
 				<td ><input type="text" th:id="${c.id}+c" name=cognome th:value="${c.cognome}" disabled></td>
 				<td ><input type="tel" minlength="10" maxlength="10" pattern="[0-9]+" th:id="${c.id}+p" name=phone th:value="${c.phone}" disabled></td>
-				<td style="display: flex;justify-content: space-around;"><button style="margin: 0;" type="button"  th:attr="onclick=|edit('${c.id}')|" th:id="${c.id}+b"  class="btn blue"> <span><i class="fas fa-edit"></i></span >Edit</button>
-										<a th:href="@{/admin/deleteCliente(ClienteId=${c.id})}" class="btn red "> <span><i class="fas fa-trash-alt"></i></span>Delete</a>
+				<td style="display: flex;justify-content: space-around;"><button style="margin: 0;" type="button"  th:attr="onclick=|edit('${c.id}')|" th:id="${c.id}+b"  class="btn blue blockbutton"> <span><i class="fas fa-edit"></i></span >Edit</button>
+										
 				
 		</td>
 			</form>
@@ -245,6 +245,11 @@ input[type=checkbox]:checked ~ .modal-dialog {
 	document.getElementById(id + 'n').disabled=false;
 	document.getElementById(id + 'c').disabled=false;
 	document.getElementById(id + 'p').disabled=false;
+	var c =document.querySelectorAll(".blockbutton");
+	for(let i=0;i< c.length ;i++){
+		c[i].disabled=true;
+	}
+	document.getElementById(id + 'b').disabled=false
 	document.getElementById(id + 'b').innerText="Save"
 	b=false;
 	}

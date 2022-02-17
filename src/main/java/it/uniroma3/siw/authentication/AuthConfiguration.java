@@ -52,13 +52,13 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
 
                 .and().formLogin()
-                .loginPage("/login").failureUrl("/login?error=error").
+                .loginPage("/login").failureUrl("/index").
                 defaultSuccessUrl("/default")
 
                 .and().logout()
                 .logoutUrl("/logout")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")        
+                .logoutSuccessUrl("/index")        
                 .invalidateHttpSession(true)
                 .clearAuthentication(true).permitAll();
     }

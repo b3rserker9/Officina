@@ -82,8 +82,7 @@
    </style>
    <body>
     <header th:replace="fragments/admin.html :: header"></header>
-    <form th:action="@{admin/conferma_prenotazione}" method="POST" th:object="${prenotazione}">
-      <input type="radio" th:field="*{id}" th:value=${prenotazione.id} checked hidden>
+    <form th:action="@{/admin/conferma_prenotazione(ClienteId=${prenotazione.id})}" method="POST" th:object="${prenotazione}">
     <div class="space"></div>
   
  <div class="container" style="width: fit-content;">

@@ -68,8 +68,19 @@ public class MainController {
 	
 	@Autowired
 	private PrenotazioneService prenotazioneservice;
-	
-	Long prenotazione_id;
+
+	@GetMapping(value ={"/","/index","/login"})
+	public String index() {
+		/*System.out.println(error.orElse(null));
+		if(error.orElse(null) != null) {
+			model.addAttribute("error",true);
+			System.out.println("true");
+		}else {
+			model.addAttribute("error",false);
+			System.out.println("false");
+		}*/
+		return "index";
+	}
 
 	@RequestMapping(value = "admin/prenota/{id}", method = RequestMethod.GET)
 	public String Prenota (Model model,@PathVariable("id") Long id) {
@@ -84,18 +95,7 @@ public class MainController {
 		return "/admin/Prenota_Intervento";
 	}
 	
-	@GetMapping(value ={"/","/index","/login"})
-	public String index() {
-		/*System.out.println(error.orElse(null));
-		if(error.orElse(null) != null) {
-			model.addAttribute("error",true);
-			System.out.println("true");
-		}else {
-			model.addAttribute("error",false);
-			System.out.println("false");
-		}*/
-		return "index";
-	}
+
 	
 	@RequestMapping(value = "admin/prenota_tipo", method = RequestMethod.GET)
 	public String Prenota_tipo(Model model) {
@@ -110,6 +110,14 @@ public class MainController {
 		return "/admin/prenota_tipo";
 	}
 	
+	
+	@RequestMapping(value = "/clienti/tipi", method = RequestMethod.GET)
+	public String tipologia(Model model) {
+	
+		model.addAttribute("tipi",tipologiaservice.tipi());
+		return "/clienti/interventi";
+	}
+	
 	@RequestMapping(value = "/prenota", method = RequestMethod.POST)
 	public String Prenota_post (Model model,@ModelAttribute("prenota") Prenotazione prenota) {
 		prenota.setConferma(false);
@@ -120,23 +128,22 @@ public class MainController {
 	
 	@GetMapping(value = "admin/confermaIntervento/{id}")
     public String confermaIntervento(@PathVariable("id") Long id, Model model) {
-		Prenotazione p =this.prenotazioneservice.prenotazioneId(id);
-		prenotazione_id=p.getId();
+		Prenotazione p =this.prenotazioneservice.prenotazioneId(id);;
 		System.out.println(p);
         model.addAttribute("meccanici", meccanicoservice.meccanicobyTipologia(p.getTipologia().getId()));
         model.addAttribute("prenotazione",p);
         return "/admin/conferma_intervento";
     }
 	
-	@PostMapping(value = "admin/conferma_prenotazione")
-	public String postconferma(Model model,@ModelAttribute("prenotazione") Prenotazione prenotazione) throws ParseException {
-		Prenotazione p =this.prenotazioneservice.prenotazioneId(prenotazione_id);
+	@PostMapping(value = "/admin/conferma_prenotazione")
+	public String postconferma(Model model,@ModelAttribute("prenotazione") Prenotazione prenotazione,@RequestParam Long ClienteId) throws ParseException {
+		Prenotazione p =this.prenotazioneservice.prenotazioneId(ClienteId);
 		p.setMeccanico(prenotazione.getMeccanico());
 		p.setData_intervento(prenotazione.getData_intervento());
 		p.setConferma(true);
 		System.out.println(prenotazione);
 		this.prenotazioneservice.save(p);
-		return "redirect:admin/Interventi";
+		return "redirect:/admin/Interventi";
 	}
 	
 	@GetMapping(value ="clienti/cronologia")
@@ -232,24 +239,28 @@ public class MainController {
 		return "redirect:/admin/Clienti";
 	}
 	
-	@GetMapping(value ="admin/Interventi")
+	@GetMapping(value ="/admin/Interventi")
 	public String interventi(Model model) {
 		model.addAttribute("prenotazione",this.prenotazioneservice.all());
 		return "admin/Interventi";
 	}
 	
 	@PostMapping(value = "/admin/editCliente")
-    public String editCliente(@RequestParam Long ClienteId,@ModelAttribute("euser") Utente utente, Model model) {
+    public String editCliente(@RequestParam Long ClienteId,@ModelAttribute("user") Utente utente, Model model,   BindingResult userBindingResult) {
 		System.out.println(utente.getNome());
+		
+		this.userValidator.validate(utente, userBindingResult);
+		  if(!userBindingResult.hasErrors()) {
 		Utente u = this.utenteservice.findById(ClienteId);
 		u.setNome(utente.getNome());
 		u.setCognome(utente.getCognome());
 		u.setPhone(utente.getPhone());
 		this.utenteservice.save(u);
-	model.addAttribute("user",this.utenteservice.findById(ClienteId));
-	
-	
-        return "redirect:/admin/Clienti";
+		return "redirect:/admin/Clienti";
+		  }
+		  model.addAttribute("credentials", new Credentials());
+	 model.addAttribute("Cliente",this.utenteservice.getClienti());
+		return "/admin/Clienti";
     }
 
 	

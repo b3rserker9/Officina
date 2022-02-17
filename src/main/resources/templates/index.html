@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
    <head  th:replace="fragments/base.html :: headerfiles(title='Workhop')"> 
    </head>
-   <body>
+  
    <style>
    .col-3 {
     width: 100%;
@@ -11,14 +11,32 @@
     position: relative;
 }
    </style>
-   <script>
-   var modal = document.getElementById("myModal");
-   function prova(){
-	
-	 modal.style.display = "block";
-}
-   </script>
+ <body>
       <header th:replace="fragments/base.html :: header"></header>
+      <div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <span class="close" style="color: red;">&times;</span>
+     <form th:action="@{/login}"  method="POST">
+    <div class="login_container" style="display: flex;flex-direction: column; margin-top: 30px;">
+      <div class="col-3">
+      <label for="name">Username:</label>
+        	<input class="effect-1" type="text" placeholder=" Name" name="username" id="name" required style="width: 100%;">
+            <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+        <label for="password">Password:</label>
+        	<input class="effect-1" type="password"placeholder=" Password" name="password" id="password" required style="width: 100%;">
+            <span class="focus-border"></span>
+        </div>
+        <p>Non ti sei registrato?<a th:href="@{/register}" style="color: #3399FF;">Registrati</a></p>
+        <button type="submit">Sign in</button>
+      <a href="#m3-c" class="link-2"></a>
+    </div>
+      </form>
+  </div>
+
+</div>
       <div class="mainblock">
          <div class="first_conteiner"></div>
          <div class="text_position">
@@ -86,7 +104,7 @@
             </div>
          </div>
       </div>
-     <div>
+     <div id="staff">
      <h2 style="font-size:60px ;">LO STAFF</h2>
      </div>
      <div class="section3">
@@ -130,7 +148,7 @@
 </figure>
      </div>
      
-     <div class="section4">
+     <div class="section4" id="contact">
        
   <h1 class="section-header">Contact</h1>
   
@@ -174,7 +192,7 @@
           
           <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">06 8524 8503</a></span></i></li>
           
-          <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
+          <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">Carepair@gmail.com</a></span></i></li>
           
         </ul>
 
@@ -202,7 +220,7 @@
   </div>
      </div>
      
-     <div class="section5" style="width: 100%; display: flex;justify-content: center;height: 449px;">
+     <div class="section5" id="orario" style="width: 100%; display: flex;justify-content: center;height: 449px;">
      <div class="t_container" style="width: 30%;">
      <table class="hours">
    <tbody>
@@ -223,33 +241,15 @@
 	</div>
      
      </div>
-      
- <div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close" style="color: red;">&times;</span>
-    <form th:action="@{/login}" method="POST">
-    <div class="login_container" style="display: flex;flex-direction: column; margin-top: 30px;">
-      <div class="col-3">
-      <label for="name">Username:</label>
-        	<input class="effect-1" type="text" placeholder=" Name" name="username" id="name" required style="width: 100%;">
-            <span class="focus-border"></span>
-        </div>
-        <div class="col-3">
-        <label for="password">Password:</label>
-        	<input class="effect-1" type="password"placeholder=" Password" name="password" id="password" required style="width: 100%;">
-            <span class="focus-border"></span>
-        </div>
-        <p>Non ti sei registrato?<a th:href="@{/register}" style="color: #3399FF;">Registrati</a></p>
-        <button type="submit">Sign in</button>
-      <a href="#m3-c" class="link-2"></a>
-    </div>
-      </form>
-  </div>
-
-</div>
-      <script>
+       <footer th:replace="fragments/base.html :: footer"></footer>
+ 
+ 
+ 
+ 
+ 
+   
+   </body>
+        <script>
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -276,7 +276,5 @@ window.onclick = function(event) {
   }
 }
 </script>
-   
-   </body>
-   <footer th:replace="fragments/base.html :: footer"></footer>
+  
 </html>

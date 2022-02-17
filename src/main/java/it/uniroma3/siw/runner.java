@@ -24,9 +24,9 @@ public class runner  {
 	@Autowired
 	private MeccanicoRepository meccanicorepository;
 	
-	@PostConstruct
+	/*@PostConstruct
 	public void popola() {
-/*
+
 		Tipologia t1 = new Tipologia("Cambio olio", "prova", 50,"Cambio_olio.png");
 		Tipologia t2 = new Tipologia("Tagliando", "prova2", 79,"Tagliando.png");
 		Tipologia t3 = new Tipologia("Autolavaggio", "prova3", 15,"Autolavaggio.png");
@@ -45,6 +45,6 @@ public class runner  {
 		s.add(t3);
 		Meccanico m2 = new Meccanico("Marco", "prova2", s);
 		meccanicorepository.save(m2);
-		*/
-	}
+		
+	}*/
 }

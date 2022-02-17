@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
    <head th:fragment="headerfiles(title)">
       <title th:text="${title}"></title>
       <script src="https://kit.fontawesome.com/ced3f913ea.js" crossorigin="anonymous"></script>
@@ -21,10 +21,10 @@
             </div>
             <div class="topnav pull-right" id="myTopnav">
             <div class="links">
-  <a href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
+  <a href="#">Home</a>
+  <a href="/index#staff">Staff</a>
+  <a href="/index#contact">Contact</a>
+  <a href="/index#orario">Orari</a>
             </div>
             <div class="sign_form">
                <a id="myBtn" style="cursor: pointer;">Login</a>
@@ -42,9 +42,8 @@
                <div class="col">
                   <div class="widget-lpinfo">
                      <img src="/images/logo2.png">
-                     <p>Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.  
-                        Lorem ipsum dolor sit amet, consecte- tur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. 
-                     </p>
+                    <p>Oltre alla normale Manutenzione di tutti i veicoli, disponiamo di 2 Centri Revisione, Servizio Gommista con sostituzione e riparazione Pneumatici e servizio Elettrauto con Strumenti di Diagnosi sempre aggiornati.</p>
+                
                   </div>
                   
                   <div class="widget-social-links">
@@ -59,18 +58,18 @@
                      <div class="textwidget">
                         <div class="quick-links">
                            <ul class="left-quick-links alignleft">
-                              <li><a href="">Engine Diagnostics</a></li>
-                              <li><a href="">Oil and Filters</a></li>
-                              <li><a href="">Air Conditioning</a></li>
-                              <li><a href="">Tire and Wheel Services</a></li>
-                              <li><a href="">Fuel System Service</a></li>
+                              <li><a >Engine Diagnostics</a></li>
+                              <li><a >Oil and Filters</a></li>
+                              <li><a >Air Conditioning</a></li>
+                              <li><a >Tire and Wheel Services</a></li>
+                              <li><a >Fuel System Service</a></li>
                            </ul>
                            <ul>
-                              <li><a href="">Car Wash</a></li>
-                              <li><a href="">Air Conditioning</a></li>
-                              <li><a href="">Engine Diagnostics</a></li>
-                              <li><a href="">Fuel System Service</a></li>
-                              <li><a href="">Safety Check</a></li>
+                              <li><a >Car Wash</a></li>
+                              <li><a >Air Conditioning</a></li>
+                              <li><a >Engine Diagnostics</a></li>
+                              <li><a >Fuel System Service</a></li>
+                              <li><a>Safety Check</a></li>
                            </ul>
                         </div>
                      </div>
@@ -82,7 +81,7 @@
                      <div class="textwidget">
                         <ul class="contact-infos">
                            <li><i class="fa fa-map-marker"></i>
-                              <b>Car workshop ltd.</b> <br> Via Roma macchiavelli, 36, roma
+                              <b>Car Repair ltd.</b> <br> Via Roma macchiavelli, 36, roma
                            </li>
                            <li><i class="fa fa-phone"></i><span class="sbold italic">
                              	06 8524 8503

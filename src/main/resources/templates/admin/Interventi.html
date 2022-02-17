@@ -188,8 +188,8 @@ input[type=checkbox]:checked ~ .modal-dialog {
 				<td th:text="${p.prezzo}+€"></td>
 				<td><span th:if="${p.conferma}" style="color: green;">Concluso</span>
     				<span th:unless="${p.conferma}" style="color: red;" >In Corso</span></td>
-    				<td style="display: flex;justify-content: space-around;"><a  th:href="'confermaIntervento/'+${p.id}"  class="btn blue"> <span><i class="fas fa-edit"></i></span>Edit</a>
-										<a  class="btn red "> <span><i class="fas fa-trash-alt"></i></span>Delete</a>
+    				<td style="display: flex;justify-content: space-around;"><a  th:href="'confermaIntervento/'+${p.id}"  class="btn blue"> <span><i class="fas fa-edit"></i></span>Conferma</a>
+										
 				
 		</td>
 			</tr>

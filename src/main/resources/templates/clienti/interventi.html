@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+   <head  th:replace="fragments/default.html :: headerfiles(title='Interventi')"> 
+   </head>
+   <style>
+   li{
+	padding: 2em 0;
+}
+   .logo{
+	    height: 125px;
+}
+      .logo a{    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+   </style>
+   <body>
+   <header th:replace="fragments/default.html :: header"></header>
+   <div class="order">
+   <div class="wrapper" style="grid-template-columns: 250px 250px 250px 250px; margin-top: 80px;">
+  <div class="circle" th:each="t : ${tipi}" style="padding-top: 0;"><div class="content" style="position: relative;"><div class="img_cont" style="display: flex;justify-content: center;    height: 50%; width: 100%;"><img style="max-width: 100%;" th:src="@{${t.img}}"/></div><div class="text_cont" style="height: 50%;" ><h2><a ><h2 style="font-size: 26px;" th:text="${t.nome}"></h2><span class="links" ></span></a></h2><p style="font-size: 2em;color: black;" th:text="${t.prezzo}+€"></p></div></div></div>
+
+  </div>
+   </div>
+   </body>
+</html>
